@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/github/Arcen3466/coursdeploiement/graph/badge.svg?token=3TC7H5PD1X)](https://codecov.io/github/Arcen3466/coursdeploiement)
+
 # Cours1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
