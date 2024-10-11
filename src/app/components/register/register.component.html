@@ -1,0 +1,59 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Nom :</label>
+    <input id="name" type="text" formControlName="name" placeholder="Name">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+      <span class="error-message" *ngIf="name?.errors?.['required']">Nom requis.</span>
+      <span class="error-message" *ngIf="name?.errors?.['pattern']">Le nom ne doit pas contenir de chiffres ou de caractères spéciaux.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="firstname">Prénom :</label>
+    <input id="firstname" type="text" formControlName="firstname" placeholder="First Name">
+    <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)">
+      <span class="error-message" *ngIf="firstname?.errors?.['required']">Prénom requis.</span>
+      <span class="error-message" *ngIf="firstname?.errors?.['pattern']">Le prénom ne doit pas contenir de chiffres ou de caractères spéciaux.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">E-mail :</label>
+    <input id="email" type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+      <span class="error-message" *ngIf="email?.errors?.['required']">L'adresse e-mail est requise.</span>
+      <span class="error-message" *ngIf="email?.errors?.['email']">Format de l'email invalide. (example&#64;mail.com)</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="birthday">Date de naissance :</label>
+    <input id="birthday" type="date" formControlName="birthday">
+    <div *ngIf="birthday?.invalid && (birthday?.dirty || birthday?.touched)">
+      <span class="error-message" *ngIf="birthday?.errors?.['required']">Date de naissance requise.</span>
+      <span class="error-message" *ngIf="birthday?.errors?.['minAge']">Vous devez avoir 18 ans.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="city">Ville :</label>
+    <input id="city" type="text" formControlName="city" placeholder="City">
+    <div *ngIf="city?.invalid && (city?.dirty || city?.touched)">
+      <span class="error-message" *ngIf="city?.errors?.['required']">Ville requise.</span>
+      <span class="error-message" *ngIf="city?.errors?.['pattern']">La ville ne doit pas contenir de chiffres ou de caractères spéciaux.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="postalCode">Code postal :</label>
+    <input id="postalCode" type="text" formControlName="postalCode" placeholder="Postal Code">
+    <div *ngIf="postalCode?.invalid && (postalCode?.dirty || postalCode?.touched)">
+      <span class="error-message" *ngIf="postalCode?.errors?.['required']">Code postal requis.</span>
+      <span class="error-message" *ngIf="postalCode?.errors?.['pattern']">Format invalide ! Le code postal doit être 5 chiffres.</span>
+    </div>
+  </div>
+
+  <span class="success-message" *ngIf="this.success !=null">{{ this.success }}</span>
+  <span class="error-message" *ngIf="this.error != null">{{ this.error }}</span>
+  <button type="submit" [disabled]="!registerForm.valid">S'inscrire</button>
+</form>
