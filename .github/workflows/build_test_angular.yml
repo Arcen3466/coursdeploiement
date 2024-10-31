@@ -65,6 +65,9 @@ jobs:
           path: dist
           if-no-files-found: error
 
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: build and publish package on NPM 📦
         run: |
           git config --global user.email "gabriel.boigsimon@gmail.com"
