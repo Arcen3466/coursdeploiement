@@ -64,3 +64,13 @@ jobs:
           # Upload entire repository  
           path: dist
           if-no-files-found: error
+
+      - name: build and publish package on NPM 📦
+        run: |
+          git config --global user.email "gabriel.boigsimon@gmail.com
+          git config --global user.name "Gabriel Boig-Simon"
+          npm run build-npm
+          npm version patch
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
