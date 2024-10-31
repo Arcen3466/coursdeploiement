@@ -75,15 +75,15 @@ jobs:
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      # - name: build and publish package on NPM 📦
-      #   run: |
-      #     git config --global user.email "gabriel.boigsimon@gmail.com"
-      #     git config --global user.name "arcen3466"
-      #     npm run build-npm
-      #     npm version patch
-      #     npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: build and publish package on NPM 📦
+        run: |
+          git config --global user.email "gabriel.boigsimon@gmail.com"
+          git config --global user.name "arcen3466"
+          npm run build-npm
+          npm version patch
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   deploy:
     name: Deploy to GitHub Pages
