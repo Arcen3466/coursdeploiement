@@ -74,12 +74,6 @@ jobs:
 
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
-      - name: Clean up untracked files
-        run: git clean -fd  # Nettoie les fichiers non suivis
-
-      - name: Discard changes
-        run: git checkout -- . # Réinitialise les fichiers modifiés
         
       - name: build and publish package on NPM 📦
         run: |
