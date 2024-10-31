@@ -67,7 +67,7 @@ jobs:
 
       - name: build and publish package on NPM 📦
         run: |
-          git config --global user.email "gabriel.boigsimon@gmail.com
+          git config --global user.email "gabriel.boigsimon@gmail.com"
           git config --global user.name "Gabriel Boig-Simon"
           npm run build-npm
           npm version patch
