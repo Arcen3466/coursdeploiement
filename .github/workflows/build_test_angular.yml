@@ -52,7 +52,14 @@ jobs:
         run: |
           npm ci
           npm run build --if-present
-          npm test
+          npm test:coverage
+          npm run doc
+
+      - name: Prepare folder for deployment
+        run: |
+          mkdir -p deploy-root
+          cp -r ./dist/cours1/browser/* deploy-root/
+          cp -r ./docs deploy-root/docs
 
       - name: Setup Pages
         id: pages
@@ -62,7 +69,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository  
-          path: dist
+          path: deploy-root
           if-no-files-found: error
 
       - name: Authenticate with npm

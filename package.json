@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href=/cours1/",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "serve:ssr:cours1": "node dist/cours1/server/server.mjs",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "ng deploy --base-href=/cours1/",
     "doc": "typedoc",
     "build-npm": "cross-env NODE_ENV=production && rimraf dist && mkdir dist && npx babel src --out-dir dist --copy-files"
   },
