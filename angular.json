@@ -73,7 +73,17 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "cours1:build"
+          }
+        },"deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "https://github.com/Arcen3466/coursdeploiement.git",
+            "branch": "gh-pages",
+            "dir": "dist/cours1/browser"
+          }
         }
       }
     }
