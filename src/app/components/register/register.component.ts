@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule, HttpClientModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -16,8 +15,7 @@ export class RegisterComponent {
   error!: string;
 
   constructor(
-    private form: FormBuilder,
-    private http: HttpClient  // Inject HttpClient
+    private form: FormBuilder
   ) {
     this.registerForm = this.form.group({
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\s]+$/)]],
@@ -38,17 +36,8 @@ export class RegisterComponent {
 
   public onSubmit() {
     if (this.registerForm.valid) {
-      //envoie des données au serveur Express
-      this.http.post('http://localhost:3000/register', this.registerForm.value)
-        .subscribe({
-          next: (response: any) => {
-            this.showSucces('Votre inscription a été enregistrée avec succès!');
-            this.registerForm.reset();
-          },
-          error: (error) => {
-            this.showError('Erreur lors de l\'inscription. Veuillez réessayer.');
-          }
-        });
+      this.showSucces('Votre inscription a été enregistrée avec succès!');
+      this.registerForm.reset();
     } else {
       this.showError('Veuillez corriger les erreurs dans le formulaire.');
     }
